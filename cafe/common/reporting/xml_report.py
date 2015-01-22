@@ -65,6 +65,9 @@ class XMLReport(BaseReport):
                     error_tag.text = testcase.error_trace
                 else:
                     testcase_tag.attrib['result'] = "PASSED"
+                    payload = "Here is the input payload we have sent"
+                    request_tag = ET.SubElement(testcase_tag, 'system-out')
+                    request_tag.attrib['message'] = payload
 
         result_path = path or os.getcwd()
         if os.path.isdir(result_path):
